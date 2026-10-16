@@ -1,0 +1,137 @@
+{
+  "additionalProperties": false,
+  "properties": {
+    "id": {
+      "maxLength": 160,
+      "minLength": 1,
+      "title": "Id",
+      "type": "string"
+    },
+    "taxon_id": {
+      "title": "Taxon Id",
+      "type": "string"
+    },
+    "identity_status": {
+      "default": "unresolved",
+      "enum": [
+        "documented",
+        "unresolved"
+      ],
+      "title": "Identity Status",
+      "type": "string"
+    },
+    "identity_evidence": {
+      "default": "",
+      "title": "Identity Evidence",
+      "type": "string"
+    },
+    "identification_evidence": {
+      "default": "",
+      "title": "Identification Evidence",
+      "type": "string"
+    },
+    "taxonomic_confidence": {
+      "anyOf": [
+        {
+          "maximum": 1,
+          "minimum": 0,
+          "type": "number"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Taxonomic Confidence"
+    },
+    "sex": {
+      "default": "unknown",
+      "enum": [
+        "male",
+        "female",
+        "unknown",
+        "indeterminate"
+      ],
+      "title": "Sex",
+      "type": "string"
+    },
+    "stage": {
+      "default": "unknown",
+      "enum": [
+        "juvenile",
+        "subadult",
+        "adult",
+        "unknown"
+      ],
+      "title": "Stage",
+      "type": "string"
+    },
+    "demographic_evidence": {
+      "default": "",
+      "title": "Demographic Evidence",
+      "type": "string"
+    },
+    "population": {
+      "default": "unknown",
+      "title": "Population",
+      "type": "string"
+    },
+    "locality": {
+      "default": "unknown",
+      "title": "Locality",
+      "type": "string"
+    },
+    "season": {
+      "default": "unknown",
+      "title": "Season",
+      "type": "string"
+    },
+    "reproductive_condition": {
+      "default": "unknown",
+      "title": "Reproductive Condition",
+      "type": "string"
+    },
+    "material": {
+      "default": "living_wild",
+      "enum": [
+        "living_wild",
+        "living_captive",
+        "preserved",
+        "illustration",
+        "synthetic",
+        "model"
+      ],
+      "title": "Material",
+      "type": "string"
+    },
+    "standard_length_mm": {
+      "anyOf": [
+        {
+          "exclusiveMinimum": 0,
+          "type": "number"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Standard Length Mm"
+    },
+    "length_evidence": {
+      "default": "",
+      "title": "Length Evidence",
+      "type": "string"
+    },
+    "metadata_note": {
+      "default": "",
+      "title": "Metadata Note",
+      "type": "string"
+    }
+  },
+  "required": [
+    "id",
+    "taxon_id"
+  ],
+  "title": "Specimen",
+  "type": "object"
+}

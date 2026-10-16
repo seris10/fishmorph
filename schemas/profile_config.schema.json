@@ -1,0 +1,30 @@
+{
+  "additionalProperties": false,
+  "properties": {
+    "bootstrap_samples": {
+      "default": 1000,
+      "maximum": 20000,
+      "minimum": 100,
+      "title": "Bootstrap Samples",
+      "type": "integer"
+    },
+    "minimum_interval_n": {
+      "default": 5,
+      "minimum": 3,
+      "title": "Minimum Interval N",
+      "type": "integer"
+    },
+    "seed": {
+      "default": 2026,
+      "title": "Seed",
+      "type": "integer"
+    },
+    "include_unresolved_identity": {
+      "default": false,
+      "title": "Include Unresolved Identity",
+      "type": "boolean"
+    }
+  },
+  "title": "ProfileConfig",
+  "type": "object"
+}

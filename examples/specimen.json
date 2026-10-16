@@ -1,0 +1,11 @@
+{
+  "id": "reference_001",
+  "taxon_id": "yellowstone_cutthroat",
+  "identity_status": "unresolved",
+  "identity_evidence": "",
+  "identification_evidence": "",
+  "sex": "unknown",
+  "stage": "unknown",
+  "material": "living_wild",
+  "metadata_note": "Template only. Replace with evidence for a real specimen before profiling."
+}

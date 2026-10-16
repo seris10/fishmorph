@@ -1,0 +1,76 @@
+{
+  "additionalProperties": false,
+  "properties": {
+    "profile_samples": {
+      "default": 129,
+      "maximum": 513,
+      "minimum": 17,
+      "title": "Profile Samples",
+      "type": "integer"
+    },
+    "atlas_width": {
+      "default": 128,
+      "maximum": 512,
+      "minimum": 16,
+      "title": "Atlas Width",
+      "type": "integer"
+    },
+    "atlas_height": {
+      "default": 40,
+      "maximum": 256,
+      "minimum": 8,
+      "title": "Atlas Height",
+      "type": "integer"
+    },
+    "boundary_guard_px": {
+      "default": 2,
+      "maximum": 20,
+      "minimum": 0,
+      "title": "Boundary Guard Px",
+      "type": "integer"
+    },
+    "mask_clipped_colors": {
+      "default": true,
+      "title": "Mask Clipped Colors",
+      "type": "boolean"
+    },
+    "dark_spot_contrast": {
+      "default": 8.0,
+      "exclusiveMinimum": 0,
+      "title": "Dark Spot Contrast",
+      "type": "number"
+    },
+    "light_spot_contrast": {
+      "default": 8.0,
+      "exclusiveMinimum": 0,
+      "title": "Light Spot Contrast",
+      "type": "number"
+    },
+    "spot_background_sigma_sl": {
+      "default": 0.018,
+      "exclusiveMinimum": 0,
+      "maximum": 0.2,
+      "title": "Spot Background Sigma Sl",
+      "type": "number"
+    },
+    "spot_min_area_sl2": {
+      "default": 1.5e-05,
+      "exclusiveMinimum": 0,
+      "title": "Spot Min Area Sl2",
+      "type": "number"
+    },
+    "spot_max_area_sl2": {
+      "default": 0.008,
+      "exclusiveMinimum": 0,
+      "title": "Maximum spot area (SL2)",
+      "type": "number"
+    },
+    "seed": {
+      "default": 2026,
+      "title": "Seed",
+      "type": "integer"
+    }
+  },
+  "title": "AnalysisConfig",
+  "type": "object"
+}

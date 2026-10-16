@@ -1,0 +1,70 @@
+{
+  "additionalProperties": false,
+  "properties": {
+    "source": {
+      "default": "local file",
+      "title": "Source",
+      "type": "string"
+    },
+    "photographer": {
+      "default": "unknown",
+      "title": "Photographer",
+      "type": "string"
+    },
+    "license": {
+      "default": "unknown; not cleared for redistribution",
+      "title": "License",
+      "type": "string"
+    },
+    "acquired": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Acquired"
+    },
+    "camera": {
+      "default": "unknown",
+      "title": "Camera",
+      "type": "string"
+    },
+    "session": {
+      "default": "unknown",
+      "title": "Session",
+      "type": "string"
+    },
+    "photometric_status": {
+      "default": "uncalibrated",
+      "enum": [
+        "uncalibrated",
+        "externally_calibrated",
+        "synthetic",
+        "render"
+      ],
+      "title": "Photometric Status",
+      "type": "string"
+    },
+    "photometric_protocol": {
+      "default": "uncontrolled",
+      "title": "Photometric Protocol",
+      "type": "string"
+    },
+    "calibration_evidence": {
+      "default": "",
+      "title": "Calibration Evidence",
+      "type": "string"
+    },
+    "note": {
+      "default": "",
+      "title": "Note",
+      "type": "string"
+    }
+  },
+  "title": "ImageMetadata",
+  "type": "object"
+}

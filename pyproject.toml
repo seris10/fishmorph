@@ -1,0 +1,32 @@
+[build-system]
+requires = ["setuptools>=77", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "fishmorph-local"
+version = "0.1.0"
+description = "Local, provenance-aware fish image morphometrics and mesh comparison"
+readme = "README.md"
+requires-python = ">=3.11"
+license = "MIT"
+dependencies = [
+  "numpy>=1.26,<3", "scipy>=1.12,<2", "Pillow>=10.3,<13",
+  "scikit-image>=0.23,<0.27", "pydantic>=2.7,<3",
+  "fastapi>=0.115,<1", "uvicorn>=0.30,<1",
+  "opencv-python-headless>=4.10,<5", "trimesh>=4.4,<5",
+  "statsmodels>=0.14,<0.16", "matplotlib>=3.8,<4"
+]
+[project.optional-dependencies]
+browser = ["playwright>=1.57,<2"]
+dev = ["pytest>=8,<10", "httpx>=0.27,<1", "ruff>=0.9", "build>=1", "jsonschema>=4.22,<5"]
+[project.scripts]
+fishmorph = "fishmorph.cli:main"
+[tool.setuptools.packages.find]
+where = ["src"]
+[tool.setuptools.package-data]
+fishmorph = ["static/*", "data/*.json"]
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-ra"
+[tool.ruff]
+line-length = 110

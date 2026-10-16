@@ -1,0 +1,63 @@
+{
+  "additionalProperties": false,
+  "properties": {
+    "id": {
+      "maxLength": 160,
+      "minLength": 1,
+      "title": "Id",
+      "type": "string"
+    },
+    "scientific_name": {
+      "maxLength": 240,
+      "minLength": 1,
+      "title": "Scientific Name",
+      "type": "string"
+    },
+    "common_name": {
+      "default": "",
+      "title": "Common Name",
+      "type": "string"
+    },
+    "aliases": {
+      "items": {
+        "type": "string"
+      },
+      "title": "Aliases",
+      "type": "array"
+    },
+    "status": {
+      "default": "unresolved",
+      "enum": [
+        "verified_name",
+        "name_usage_conflict",
+        "unresolved",
+        "synthetic"
+      ],
+      "title": "Status",
+      "type": "string"
+    },
+    "sources": {
+      "items": {
+        "type": "string"
+      },
+      "title": "Sources",
+      "type": "array"
+    },
+    "note": {
+      "default": "",
+      "title": "Note",
+      "type": "string"
+    },
+    "profile_allowed": {
+      "default": false,
+      "title": "Profile Allowed",
+      "type": "boolean"
+    }
+  },
+  "required": [
+    "id",
+    "scientific_name"
+  ],
+  "title": "Taxon",
+  "type": "object"
+}

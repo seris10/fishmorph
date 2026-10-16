@@ -1,0 +1,262 @@
+{
+  "$defs": {
+    "Landmark": {
+      "additionalProperties": false,
+      "properties": {
+        "x": {
+          "minimum": 0,
+          "title": "X",
+          "type": "number"
+        },
+        "y": {
+          "minimum": 0,
+          "title": "Y",
+          "type": "number"
+        },
+        "visibility": {
+          "default": "visible",
+          "enum": [
+            "visible",
+            "occluded",
+            "uncertain",
+            "not_applicable"
+          ],
+          "title": "Visibility",
+          "type": "string"
+        },
+        "basis": {
+          "default": "observed",
+          "enum": [
+            "observed",
+            "inferred"
+          ],
+          "title": "Basis",
+          "type": "string"
+        },
+        "sigma_px": {
+          "anyOf": [
+            {
+              "minimum": 0,
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Sigma Px"
+        },
+        "method": {
+          "default": "manual",
+          "title": "Method",
+          "type": "string"
+        },
+        "note": {
+          "default": "",
+          "title": "Note",
+          "type": "string"
+        }
+      },
+      "required": [
+        "x",
+        "y"
+      ],
+      "title": "Landmark",
+      "type": "object"
+    },
+    "Quality": {
+      "additionalProperties": false,
+      "properties": {
+        "view": {
+          "default": "unknown",
+          "enum": [
+            "lateral_left",
+            "lateral_right",
+            "oblique",
+            "dorsal",
+            "ventral",
+            "frontal",
+            "unknown"
+          ],
+          "title": "View",
+          "type": "string"
+        },
+        "geometry_reviewed": {
+          "default": false,
+          "title": "Geometry Reviewed",
+          "type": "boolean"
+        },
+        "color_reviewed": {
+          "default": false,
+          "title": "Color Reviewed",
+          "type": "boolean"
+        },
+        "curved": {
+          "default": false,
+          "title": "Curved",
+          "type": "boolean"
+        },
+        "refraction": {
+          "default": false,
+          "title": "Refraction",
+          "type": "boolean"
+        },
+        "severe_perspective": {
+          "default": false,
+          "title": "Severe Perspective",
+          "type": "boolean"
+        },
+        "mouth": {
+          "default": "unknown",
+          "enum": [
+            "closed",
+            "open",
+            "unknown"
+          ],
+          "title": "Mouth",
+          "type": "string"
+        },
+        "fins": {
+          "default": "unknown",
+          "enum": [
+            "natural",
+            "spread",
+            "folded",
+            "unknown"
+          ],
+          "title": "Fins",
+          "type": "string"
+        },
+        "blur": {
+          "default": "unknown",
+          "enum": [
+            "low",
+            "moderate",
+            "severe",
+            "unknown"
+          ],
+          "title": "Blur",
+          "type": "string"
+        },
+        "resolution_note": {
+          "default": "",
+          "title": "Resolution Note",
+          "type": "string"
+        },
+        "note": {
+          "default": "",
+          "title": "Note",
+          "type": "string"
+        }
+      },
+      "title": "Quality",
+      "type": "object"
+    }
+  },
+  "additionalProperties": false,
+  "properties": {
+    "image_id": {
+      "title": "Image Id",
+      "type": "string"
+    },
+    "author": {
+      "minLength": 1,
+      "title": "Author",
+      "type": "string"
+    },
+    "note": {
+      "default": "",
+      "title": "Note",
+      "type": "string"
+    },
+    "quality": {
+      "$ref": "#/$defs/Quality"
+    },
+    "landmarks": {
+      "additionalProperties": {
+        "$ref": "#/$defs/Landmark"
+      },
+      "title": "Landmarks",
+      "type": "object"
+    },
+    "masks": {
+      "additionalProperties": {
+        "items": {
+          "items": {
+            "maxItems": 2,
+            "minItems": 2,
+            "prefixItems": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "number"
+              }
+            ],
+            "type": "array"
+          },
+          "type": "array"
+        },
+        "type": "array"
+      },
+      "title": "Masks",
+      "type": "object"
+    },
+    "regions": {
+      "additionalProperties": {
+        "items": {
+          "items": {
+            "maxItems": 2,
+            "minItems": 2,
+            "prefixItems": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "number"
+              }
+            ],
+            "type": "array"
+          },
+          "type": "array"
+        },
+        "type": "array"
+      },
+      "title": "Regions",
+      "type": "object"
+    },
+    "body_basis": {
+      "default": "observed_with_masked_gaps",
+      "enum": [
+        "observed_with_masked_gaps",
+        "inferred"
+      ],
+      "title": "Body Basis",
+      "type": "string"
+    },
+    "structures": {
+      "additionalProperties": {
+        "enum": [
+          "present",
+          "absent_observed",
+          "not_visible",
+          "not_applicable"
+        ],
+        "type": "string"
+      },
+      "title": "Structures",
+      "type": "object"
+    },
+    "structure_evidence": {
+      "default": "",
+      "title": "Structure Evidence",
+      "type": "string"
+    }
+  },
+  "required": [
+    "image_id",
+    "author"
+  ],
+  "title": "Annotation",
+  "type": "object"
+}

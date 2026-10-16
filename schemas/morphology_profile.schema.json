@@ -1,0 +1,393 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:fishmorph:morphology-profile:1",
+  "title": "FishMorph empirical/synthetic morphology profile",
+  "type": "object",
+  "description": "Portable evidence description, not a schema for declaring universal biological correctness.",
+  "required": [
+    "id",
+    "taxon",
+    "group",
+    "n_individuals",
+    "n_images",
+    "measurements",
+    "individuals",
+    "body_profile",
+    "input_analysis_ids",
+    "input_snapshots",
+    "config",
+    "analysis_config",
+    "schema_version",
+    "software_version",
+    "measurement_protocol"
+  ],
+  "properties": {
+    "id": {
+      "type": "string",
+      "pattern": "^profile_"
+    },
+    "taxon": {
+      "additionalProperties": false,
+      "properties": {
+        "id": {
+          "maxLength": 160,
+          "minLength": 1,
+          "title": "Id",
+          "type": "string"
+        },
+        "scientific_name": {
+          "maxLength": 240,
+          "minLength": 1,
+          "title": "Scientific Name",
+          "type": "string"
+        },
+        "common_name": {
+          "default": "",
+          "title": "Common Name",
+          "type": "string"
+        },
+        "aliases": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Aliases",
+          "type": "array"
+        },
+        "status": {
+          "default": "unresolved",
+          "enum": [
+            "verified_name",
+            "name_usage_conflict",
+            "unresolved",
+            "synthetic"
+          ],
+          "title": "Status",
+          "type": "string"
+        },
+        "sources": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Sources",
+          "type": "array"
+        },
+        "note": {
+          "default": "",
+          "title": "Note",
+          "type": "string"
+        },
+        "profile_allowed": {
+          "default": false,
+          "title": "Profile Allowed",
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "id",
+        "scientific_name"
+      ],
+      "title": "Taxon",
+      "type": "object"
+    },
+    "group": {
+      "type": "object",
+      "required": [
+        "population",
+        "locality",
+        "sex",
+        "stage",
+        "season",
+        "reproductive_condition",
+        "material",
+        "view",
+        "mouth",
+        "fins"
+      ],
+      "additionalProperties": {
+        "type": "string"
+      }
+    },
+    "n_individuals": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "n_images": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "measurements": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "object",
+        "required": [
+          "n_individuals",
+          "mean",
+          "median",
+          "sd",
+          "min",
+          "max",
+          "unit",
+          "label"
+        ],
+        "properties": {
+          "n_individuals": {
+            "type": "integer",
+            "minimum": 1
+          },
+          "mean": {
+            "type": [
+              "number",
+              "null"
+            ]
+          },
+          "median": {
+            "type": [
+              "number",
+              "null"
+            ]
+          },
+          "sd": {
+            "type": [
+              "number",
+              "null"
+            ]
+          },
+          "min": {
+            "type": [
+              "number",
+              "null"
+            ]
+          },
+          "max": {
+            "type": [
+              "number",
+              "null"
+            ]
+          },
+          "mean_ci95": {
+            "anyOf": [
+              {
+                "type": "null"
+              },
+              {
+                "type": "array",
+                "items": {
+                  "type": "number"
+                },
+                "minItems": 2,
+                "maxItems": 2
+              }
+            ]
+          },
+          "unit": {
+            "type": "string"
+          },
+          "label": {
+            "type": "string"
+          }
+        },
+        "additionalProperties": true
+      }
+    },
+    "individuals": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": [
+          "specimen_id",
+          "n_images",
+          "measurements",
+          "analysis_ids",
+          "specimen"
+        ]
+      }
+    },
+    "body_profile": {
+      "type": [
+        "object",
+        "null"
+      ]
+    },
+    "shape_analysis": {
+      "type": [
+        "object",
+        "null"
+      ]
+    },
+    "covariance": {
+      "type": "object"
+    },
+    "allometry": {
+      "type": "object"
+    },
+    "color_groups": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "photometric_status",
+          "photometric_protocol",
+          "n_individuals",
+          "regions",
+          "individuals"
+        ]
+      }
+    },
+    "mean_sl_landmarks": {
+      "type": "object"
+    },
+    "landmark_definitions": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "string"
+      }
+    },
+    "structures": {
+      "type": "object"
+    },
+    "input_analysis_ids": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "minItems": 1
+    },
+    "input_snapshots": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "analysis_id",
+          "image_id",
+          "annotation_id",
+          "sha256",
+          "specimen"
+        ]
+      }
+    },
+    "config": {
+      "additionalProperties": false,
+      "properties": {
+        "bootstrap_samples": {
+          "default": 1000,
+          "maximum": 20000,
+          "minimum": 100,
+          "title": "Bootstrap Samples",
+          "type": "integer"
+        },
+        "minimum_interval_n": {
+          "default": 5,
+          "minimum": 3,
+          "title": "Minimum Interval N",
+          "type": "integer"
+        },
+        "seed": {
+          "default": 2026,
+          "title": "Seed",
+          "type": "integer"
+        },
+        "include_unresolved_identity": {
+          "default": false,
+          "title": "Include Unresolved Identity",
+          "type": "boolean"
+        }
+      },
+      "title": "ProfileConfig",
+      "type": "object"
+    },
+    "analysis_config": {
+      "additionalProperties": false,
+      "properties": {
+        "profile_samples": {
+          "default": 129,
+          "maximum": 513,
+          "minimum": 17,
+          "title": "Profile Samples",
+          "type": "integer"
+        },
+        "atlas_width": {
+          "default": 128,
+          "maximum": 512,
+          "minimum": 16,
+          "title": "Atlas Width",
+          "type": "integer"
+        },
+        "atlas_height": {
+          "default": 40,
+          "maximum": 256,
+          "minimum": 8,
+          "title": "Atlas Height",
+          "type": "integer"
+        },
+        "boundary_guard_px": {
+          "default": 2,
+          "maximum": 20,
+          "minimum": 0,
+          "title": "Boundary Guard Px",
+          "type": "integer"
+        },
+        "mask_clipped_colors": {
+          "default": true,
+          "title": "Mask Clipped Colors",
+          "type": "boolean"
+        },
+        "dark_spot_contrast": {
+          "default": 8.0,
+          "exclusiveMinimum": 0,
+          "title": "Dark Spot Contrast",
+          "type": "number"
+        },
+        "light_spot_contrast": {
+          "default": 8.0,
+          "exclusiveMinimum": 0,
+          "title": "Light Spot Contrast",
+          "type": "number"
+        },
+        "spot_background_sigma_sl": {
+          "default": 0.018,
+          "exclusiveMinimum": 0,
+          "maximum": 0.2,
+          "title": "Spot Background Sigma Sl",
+          "type": "number"
+        },
+        "spot_min_area_sl2": {
+          "default": 1.5e-05,
+          "exclusiveMinimum": 0,
+          "title": "Spot Min Area Sl2",
+          "type": "number"
+        },
+        "spot_max_area_sl2": {
+          "default": 0.008,
+          "exclusiveMinimum": 0,
+          "title": "Maximum spot area (SL2)",
+          "type": "number"
+        },
+        "seed": {
+          "default": 2026,
+          "title": "Seed",
+          "type": "integer"
+        }
+      },
+      "title": "AnalysisConfig",
+      "type": "object"
+    },
+    "schema_version": {
+      "const": "fishmorph.1"
+    },
+    "software_version": {
+      "type": "string"
+    },
+    "measurement_protocol": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    },
+    "limitations": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    }
+  },
+  "additionalProperties": true
+}

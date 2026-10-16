@@ -1,0 +1,10 @@
+{
+  "id": "model_001",
+  "taxon_id": "yellowstone_cutthroat",
+  "material": "model",
+  "identity_status": "documented",
+  "identity_evidence": "User-supplied generated asset; keep its filename and checksum in image provenance.",
+  "sex": "unknown",
+  "stage": "unknown",
+  "metadata_note": "Intended species is a comparison target, not an independently verified identification."
+}
