@@ -2,7 +2,7 @@
 
 FishMorph is a local Python application for annotating fish photographs, calculating image measurements, summarizing observations by specimen, and comparing annotated mesh renders with reference profiles.
 
-Work in progress. The included fixture generator produces synthetic geometry and colors. There are no empirical Yellowstone species measurements or validated population distributions in this repository. Software tests do not establish biological accuracy.
+The demo uses synthetic images and geometry. Bring your own photographs, annotations and scale measurements for a real collection; the package does not include a biological reference dataset.
 
 ## Installation
 
@@ -34,7 +34,7 @@ fishmorph --project ./my-fish init
 fishmorph --project ./my-fish serve
 ```
 
-1. Create a specimen and record identity and provenance. Leave unknown values unknown; repeated photographs do not establish independent individuals.
+1. Create a specimen and record identity and provenance. Record uncertain identifications as unknown and group repeated photographs under the same specimen.
 2. Import photographs and mark the snout, caudal base, and dorsal reference. Additional anatomical landmarks enable additional measurements.
 3. Draw the visible-fish mask and a separate fins-excluded body envelope. Mark occlusion, uncertain boundaries, and photometric artifacts separately.
 4. Record view, articulation, and quality flags. Review geometry and color before saving an analysis.
